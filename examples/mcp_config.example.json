@@ -1,0 +1,25 @@
+{
+  "mcpServers": {
+    "ctx-pager-guarded": {
+      "command": "python3",
+      "args": [
+        "-m",
+        "mcp_tool_guard.cli",
+        "proxy",
+        "--policy",
+        "ctx_pager_hardened",
+        "--audit",
+        ".tool_guard/ctx_pager_audit.db",
+        "--",
+        "python3",
+        "-m",
+        "ctx_pager.mcp_server",
+        "--db",
+        ".ctx_pager/memory.db"
+      ],
+      "env": {
+        "PYTHONPATH": "/path/to/mcp-tool-guard/src:/path/to/ctx-pager/src"
+      }
+    }
+  }
+}

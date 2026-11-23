@@ -1,0 +1,30 @@
+{
+  "name": "custom_coding_agent",
+  "mode": "enforce",
+  "default_action": "allow",
+  "denied_tools": ["shell_exec", "raw_eval"],
+  "filesystem": {
+    "allowed_roots": ["{workspace}"],
+    "allow_symlinks_outside": false
+  },
+  "command": {
+    "allowed_binaries": ["ls", "cat", "grep", "rg", "git", "python3", "pytest"],
+    "forbid_shell_metachars": true,
+    "forbid_dangerous_flags": true
+  },
+  "network": {
+    "allowed_schemes": ["https"],
+    "block_private_ips": true,
+    "block_metadata_ips": true,
+    "resolve_dns": true
+  },
+  "dlp": {
+    "redact_responses": true,
+    "block_secrets_in_args": true
+  },
+  "injection": {
+    "action": "tag",
+    "score_threshold": 0.60,
+    "taint_ttl_calls": 5
+  }
+}
